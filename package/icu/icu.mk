@@ -36,7 +36,7 @@ HOST_ICU_CONF_OPTS = \
 	--disable-extras \
 	--disable-icuio \
 	--disable-layout \
-	--disable-renaming
+	--disable-renaming CFLAGS="-fPIC -DPIC" CXXFLAGS="-fPIC -DPIC"
 ICU_SUBDIR = source
 HOST_ICU_SUBDIR = source
 

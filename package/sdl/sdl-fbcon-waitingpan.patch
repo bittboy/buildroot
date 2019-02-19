@@ -1,0 +1,13 @@
+diff -ru sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c
+--- sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c	2012-01-19 07:30:06.000000000 +0100
++++ sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c	2013-05-25 13:54:17.000000000 +0200
+@@ -1431,7 +1433,8 @@
+ 	if ( FB_IsSurfaceBusy(this->screen) ) {
+ 		FB_WaitBusySurfaces(this);
+ 	}
+-	wait_vbl(this);
++	// The GCW Zero kernel waits for vsync as part of the pan ioctl.
++	//wait_vbl(this);
+ 	if ( ioctl(console_fd, FBIOPAN_DISPLAY, &cache_vinfo) < 0 ) {
+ 		SDL_SetError("ioctl(FBIOPAN_DISPLAY) failed");
+ 		return(-1);

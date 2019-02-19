@@ -1,0 +1,32 @@
+diff -ru sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c
+--- sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c	2012-01-19 07:30:06.000000000 +0100
++++ sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c	2013-09-13 14:03:04.010453419 +0200
+@@ -1907,12 +1913,11 @@
+ static void FB_VideoQuit(_THIS)
+ {
+ 	int i, j;
++	const char *dontClearPixels = SDL_getenv("SDL_FBCON_DONT_CLEAR");
+ 
+ 	if ( this->screen ) {
+ 		/* Clear screen and tell SDL not to free the pixels */
+ 
+-		const char *dontClearPixels = SDL_getenv("SDL_FBCON_DONT_CLEAR");
+-
+ 		/* If the framebuffer is not to be cleared, make sure that we won't
+ 		 * display the previous frame when disabling double buffering. */
+ 		if ( dontClearPixels && flip_page == 0 ) {
+@@ -1969,7 +1974,13 @@
+ 
+ 		/* Restore the original video mode and palette */
+ 		if ( FB_InGraphicsMode(this) ) {
+-			FB_RestorePalette(this);
++			if (dontClearPixels) {
++				/* Restore only panning, keep current  mode */
++				ioctl(console_fd, FBIOGET_VSCREENINFO, &saved_vinfo);
++				saved_vinfo.yoffset = saved_vinfo.xoffset = 0;
++			} else {
++				FB_RestorePalette(this);
++			}
+ 			ioctl(console_fd, FBIOPUT_VSCREENINFO, &saved_vinfo);
+ 		}
+ 

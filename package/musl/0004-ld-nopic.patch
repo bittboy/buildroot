@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -127,7 +127,7 @@
+ 
+ $(CRT_OBJS): CFLAGS_ALL += -DCRT
+ 
+-$(LOBJS) $(LDSO_OBJS): CFLAGS_ALL += -fPIC
++$(LOBJS) $(LDSO_OBJS): CFLAGS_ALL += 
+ 
+ CC_CMD = $(CC) $(CFLAGS_ALL) -c -o $@ $<

@@ -1,0 +1,42 @@
+Damnit, this shit is broken !
+On other platforms, this is usually implied but not here !
+For some reasons, some OGG files would simply refuse to play without Mix_Init.
+Some games even need that you call Mix_Init twice in very specific places 
+before sound works properly.
+
+Also, we make sure that we are using the sound format.
+You never know, some could try to run it big-endian on our little endian toolchain !
+
+Also, make sure to fix broken userspace...
+We really shouldn't allow weird frequencies on that console because it simply does not work.
+
+Btw, this took me days before i eventually found these workarounds.
+I still couldn't find the cause for this but to be fair, i don't care
+anymore and i suspect it's a kernel/sound driver issue.
+
+Gameblabla, 2018
+
+diff -Nur SDL_mixer-1.2.13.orig/mixer.c SDL_mixer-1.2.13/mixer.c
+--- SDL_mixer-1.2.13.orig/mixer.c
++++ SDL_mixer-1.2.13/mixer.c
+@@ -420,6 +420,10 @@
+ 		}
+ 	}
+ 
++	if (format == AUDIO_S16 || format == AUDIO_S16MSB || format == AUDIO_S16SYS)
++		format = AUDIO_S16LSB;
++	Mix_Init(MIX_INIT_OGG|MIX_INIT_MOD);
++	
+ 	/* Set the desired format and frequency */
+ 	desired.freq = frequency;
+ 	desired.format = format;
+@@ -476,6 +480,9 @@
+ 
+ 	audio_opened = 1;
+ 	SDL_PauseAudio(0);
++	
++	Mix_Init(MIX_INIT_OGG|MIX_INIT_MOD);
++	
+ 	return(0);
+ }
+ 

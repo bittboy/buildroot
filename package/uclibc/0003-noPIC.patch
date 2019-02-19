@@ -1,0 +1,20 @@
+diff --git a/Rules.mak b/Rules.mak
+--- a/Rules.mak
++++ b/Rules.mak
+@@ -328,11 +328,11 @@
+ CPU_LDFLAGS-$(ARCH_LITTLE_ENDIAN) += -Wl,-EL
+ CPU_LDFLAGS-$(ARCH_BIG_ENDIAN)    += -Wl,-EB
+ 
+-PICFLAG-y := -fPIC
+-PICFLAG-$(UCLIBC_FORMAT_FDPIC_ELF) := -mfdpic
+-PICFLAG-$(UCLIBC_FORMAT_DSBT_ELF)  := -mdsbt -fpic
+-PICFLAG := $(PICFLAG-y)
+-PIEFLAG_NAME:=-fPIE
++PICFLAG-y := 
++PICFLAG-$(UCLIBC_FORMAT_FDPIC_ELF) := 
++PICFLAG-$(UCLIBC_FORMAT_DSBT_ELF)  := 
++PICFLAG := 
++PIEFLAG_NAME:=
+ 
+ $(eval $(call check-gcc-var,-fdata-sections))
+ $(eval $(call check-gcc-var,-ffunction-sections))

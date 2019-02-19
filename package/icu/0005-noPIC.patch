@@ -1,0 +1,15 @@
+--- a/source/config/mh-linux
++++ b/source/config/mh-linux
+@@ -10,9 +10,9 @@
+ GEN_DEPS.cc= $(CXX) -E -MM $(DEFS) $(CPPFLAGS) $(CXXFLAGS)
+ 
+ ## Flags for position independent code
+-SHAREDLIBCFLAGS = -fPIC
+-SHAREDLIBCXXFLAGS = -fPIC
+-SHAREDLIBCPPFLAGS = -DPIC
++SHAREDLIBCFLAGS = 
++SHAREDLIBCXXFLAGS = 
++SHAREDLIBCPPFLAGS = 
+ 
+ ## Additional flags when building libraries and with threads
+ THREADSCPPFLAGS = -D_REENTRANT

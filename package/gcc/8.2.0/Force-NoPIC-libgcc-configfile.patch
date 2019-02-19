@@ -1,0 +1,6 @@
+--- a/libgcc/config/t-libgcc-pic
++++ b/libgcc/config/t-libgcc-pic
+@@ -1,2 +1,2 @@
+ # Compile libgcc2.a with pic.
+-HOST_LIBGCC2_CFLAGS += $(PICFLAG)
++HOST_LIBGCC2_CFLAGS += 
