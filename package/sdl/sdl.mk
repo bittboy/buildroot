@@ -4,9 +4,8 @@
 #
 ################################################################################
 
-SDL_VERSION = 1.2.15
-SDL_SOURCE = SDL-$(SDL_VERSION).tar.gz
-SDL_SITE = http://www.libsdl.org/release
+SDL_VERSION = b26f19d10
+SDL_SITE = $(call github,opendingux,SDL,$(SDL_VERSION))
 SDL_LICENSE = LGPL-2.1+
 SDL_LICENSE_FILES = COPYING
 SDL_INSTALL_STAGING = YES
@@ -22,6 +21,8 @@ HOST_SDL_PRE_CONFIGURE_HOOKS += SDL_RUN_AUTOGEN
 
 SDL_DEPENDENCIES += host-automake host-autoconf host-libtool
 HOST_SDL_DEPENDENCIES += host-automake host-autoconf host-libtool
+
+SDL_CONF_OPTS += --enable-audio=yes --enable-alsa=yes --enable-alsa-shared=no
 
 SDL_CONF_OPTS += --enable-video-qtopia=no
 
