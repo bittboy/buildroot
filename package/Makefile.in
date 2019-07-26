@@ -146,7 +146,9 @@ ifeq ($(BR2_DEBUG_3),y)
 TARGET_DEBUGGING = -g3
 endif
 
+TARGET_OPTIMIZATION += -fno-PIC -flto
 TARGET_LDFLAGS = $(call qstrip,$(BR2_TARGET_LDFLAGS))
+TARGET_LDFLAGS += -flto
 
 # By design, _FORTIFY_SOURCE requires gcc optimization to be enabled.
 # Therefore, we need to pass _FORTIFY_SOURCE and the optimization level
