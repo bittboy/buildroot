@@ -1,0 +1,58 @@
+diff --git a/config/picflag.m4 b/config/picflag.m4
+--- a/config/picflag.m4
++++ b/config/picflag.m4
+@@ -34,7 +22,7 @@
+     i[[34567]]86-*-nto-qnx*)
+ 	# QNX uses GNU C++, but need to define -shared option too, otherwise
+ 	# it will coredump.
+-	$1='-fPIC -shared'
++	$1='-fno-PIC'
+ 	;;
+     i[[34567]]86-pc-msdosdjgpp*)
+ 	# DJGPP does not support shared libraries at all.
+@@ -42,7 +30,7 @@
+     ia64*-*-hpux*)
+ 	# On IA64 HP-UX, PIC is the default but the pic flag
+ 	# sets the default TLS model and affects inlining.
+-	$1=-fPIC
++	$1=-fno-PIC
+ 	;;
+     mips-sgi-irix6*)
+ 	# PIC is the default.
+@@ -54,30 +42,30 @@
+     # Some targets support both -fPIC and -fpic, but prefer the latter.
+     # FIXME: Why?
+     i[[34567]]86-*-* | x86_64-*-*)
+-	$1=-fpic
++	$1=-fno-PIC
+ 	;;
+     # FIXME: Override -fPIC default in libgcc only? 
+     sh-*-linux* | sh[[2346lbe]]*-*-linux*)
+-	$1=-fpic
++	$1=-fno-PIC
+ 	;;
+     # FIXME: Simplify to sh*-*-netbsd*?
+     sh-*-netbsdelf* | shl*-*-netbsdelf* | sh5-*-netbsd* | sh5l*-*-netbsd* | \
+       sh64-*-netbsd* | sh64l*-*-netbsd*)
+-	$1=-fpic
++	$1=-fno-PIC
+ 	;;
+     # Default to -fPIC unless specified otherwise.
+     *)
+-	$1=-fPIC
++	$1=-fno-PIC
+ 	;;
+ esac
+ 
+ # If the user explicitly uses -fpic/-fPIC, keep that.
+ case "${m4_bpatsubsts($1, PICFLAG, CFLAGS)}" in
+     *-fpic*)
+-	$1=-fpic
++	$1=-fno-PIC
+ 	;;
+     *-fPIC*)
+-	$1=-fPIC
++	$1=-fno-PIC
+ 	;;
+ esac
+ ])
