@@ -20,7 +20,7 @@ endif
 
 LUA_PROVIDES = luainterpreter
 
-LUA_CFLAGS = -Wall -fPIC -DLUA_USE_POSIX
+LUA_CFLAGS = -Wall -DLUA_USE_POSIX
 
 ifeq ($(BR2_PACKAGE_LUA_5_3),y)
 LUA_CFLAGS += -DLUA_COMPAT_5_2
