@@ -532,6 +532,7 @@ endif
 
 FFMPEG_CONF_ENV += CFLAGS="$(FFMPEG_CFLAGS)"
 FFMPEG_CONF_OPTS += $(call qstrip,$(BR2_PACKAGE_FFMPEG_EXTRACONF))
+FFMPEG_CONF_OPTS += --disable-msa --disable-mipsdsp --disable-mipsdspr2 --disable-asm --disable-mips32r2 --disable-mips32r5
 
 # Override FFMPEG_CONFIGURE_CMDS: FFmpeg does not support --target and others
 define FFMPEG_CONFIGURE_CMDS
