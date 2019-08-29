@@ -1,0 +1,11 @@
+--- a/libgcc/Makefile.in
++++ n/libgcc/Makefile.in
+@@ -253,7 +253,7 @@
+ # Additional target-dependent options for compiling libgcc2.a.
+ HOST_LIBGCC2_CFLAGS =
+ 
+-PICFLAG = @PICFLAG@
++PICFLAG = 
+ 
+ CET_FLAGS = @CET_FLAGS@
+ 

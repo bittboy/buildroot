@@ -1,0 +1,12 @@
+diff -ru sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c
+--- sdl-1.2.15.org/src/video/fbcon/SDL_fbvideo.c	2012-01-19 07:30:06.000000000 +0100
++++ sdl-1.2.15/src/video/fbcon/SDL_fbvideo.c	2012-08-30 16:11:29.000000000 +0200
+@@ -1915,7 +1915,7 @@
+ 
+ 		/* If the framebuffer is not to be cleared, make sure that we won't
+ 		 * display the previous frame when disabling double buffering. */
+-		if ( dontClearPixels && flip_page == 0 ) {
++		if ( dontClearPixels && (this->screen->flags & SDL_DOUBLEBUF) && flip_page == 0 ) {
+ 			SDL_memcpy(flip_address[0], flip_address[1], this->screen->pitch * this->screen->h);
+ 		}
+ 

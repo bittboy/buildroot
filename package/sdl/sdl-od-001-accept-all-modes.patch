@@ -1,0 +1,15 @@
+diff --git a/src/video/fbcon/SDL_fbvideo.c b/src/video/fbcon/SDL_fbvideo.c
+index fec158f..dd46069 100644
+--- a/src/video/fbcon/SDL_fbvideo.c
++++ b/src/video/fbcon/SDL_fbvideo.c
+@@ -273,6 +273,10 @@ static SDL_VideoDevice *FB_CreateDevice(int devindex)
+ 
+ 	this->free = FB_DeleteDevice;
+ 
++	/* OpenDingux specific patch: The video driver can handle everything
++	 * from 4x4 to 640x480 */
++	this->handles_any_size = 1;
++
+ 	return this;
+ }
+ 
