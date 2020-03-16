@@ -18,6 +18,7 @@ rm -f $(TARGET_DIR)/usr/bin/libmikmod-config
 endef
 LIBMIKMOD_POST_INSTALL_TARGET_HOOKS += LIBMIKMOD_REMOVE_LIBMIKMOD_CONFIG
 
+LIBMIKMOD_DEPENDENCIES += sdl
 LIBMIKMOD_CONF_OPTS += --enable-sdl --enable-sdl2=no --enable-shared=no
 
 $(eval $(autotools-package))
