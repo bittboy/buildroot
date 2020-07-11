@@ -1,0 +1,10 @@
+--- a/gcc/config/mips/mips.c
++++ b/gcc/config/mips/mips.c
+@@ -20007,7 +20007,7 @@
+   /* The effect of -mabicalls isn't defined for the EABI.  */
+   if (mips_abi == ABI_EABI && TARGET_ABICALLS)
+     {
+-      error ("unsupported combination: %s", "-mabicalls -mabi=eabi");
++     /* error ("unsupported combination: %s", "-mabicalls -mabi=eabi");*/
+       target_flags &= ~MASK_ABICALLS;
+     }
