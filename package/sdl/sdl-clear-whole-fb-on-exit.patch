@@ -1,0 +1,13 @@
+diff --git a/src/video/fbcon/SDL_fbvideo.c b/src/video/fbcon/SDL_fbvideo.c
+index 052e7de..037d17f 100644
+--- a/src/video/fbcon/SDL_fbvideo.c
++++ b/src/video/fbcon/SDL_fbvideo.c
+@@ -1930,7 +1930,7 @@ static void FB_VideoQuit(_THIS)
+ 			int left = this->screen->pitch*this->screen->h;
+ 			while ( left-- ) { *rowp++ = 0; }
+ #else
+-			SDL_memset(this->screen->pixels,0,this->screen->h*this->screen->pitch);
++			SDL_memset(mapped_mem, 0, mapped_memlen);
+ #endif
+ 		}
+ 		/* This test fails when using the VGA16 shadow memory */

@@ -25,17 +25,8 @@ PIXMAN_CONF_OPTS = --disable-gtk
 # the HW doesn't support it. The only case where the ARM SIMD code
 # cannot be *built* at all is when the platform doesn't support ARM
 # instructions at all, so we have to disable that explicitly.
-ifeq ($(BR2_ARM_CPU_HAS_ARM),y)
-PIXMAN_CONF_OPTS += --enable-arm-simd
-else
 PIXMAN_CONF_OPTS += --disable-arm-simd
-endif
-
-ifeq ($(BR2_ARM_CPU_HAS_ARM)$(BR2_ARM_CPU_HAS_NEON),yy)
-PIXMAN_CONF_OPTS += --enable-arm-neon
-else
 PIXMAN_CONF_OPTS += --disable-arm-neon
-endif
 
 # disable iwmmxt support for CPU's that don't have
 # this feature

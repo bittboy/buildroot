@@ -22,7 +22,7 @@ endif
 
 LUA_PROVIDES = luainterpreter
 
-LUA_CFLAGS = -Wall -fPIC -DLUA_USE_POSIX
+LUA_CFLAGS = -Wall -fno-PIC -DLUA_USE_POSIX
 
 ifeq ($(BR2_PACKAGE_LUA_5_4),y)
 LUA_CFLAGS += -DLUA_COMPAT_5_3
