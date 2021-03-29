@@ -52,14 +52,24 @@ ifeq ($(BR2_PACKAGE_LIBMAD),y)
 SDL_MIXER_CONF_OPTS += --enable-music-mp3-mad-gpl
 SDL_MIXER_DEPENDENCIES += libmad
 else
-SDL_MIXER_CONF_OPTS += --disable-music-mp3-mad-gpl
+ifeq ($(BR2_PACKAGE_MPG123),y)
+SDL_MIXER_CONF_OPTS += --enable-music-mp3
+SDL_MIXER_DEPENDENCIES += mpg123
+else
+SDL_MIXER_CONF_OPTS += --disable-music-mp3
+endif
 endif
 
+ifeq ($(BR2_PACKAGE_LIBMIKMOD),y)
+SDL_MIXER_CONF_OPTS += --enable-music-mod
+SDL_MIXER_DEPENDENCIES += libmikmod
+else
 ifeq ($(BR2_PACKAGE_LIBMODPLUG),y)
 SDL_MIXER_CONF_OPTS += --enable-music-mod-modplug
-SDL_MIXER_DEPENDENCIES += host-pkgconf libmodplug
+SDL_MIXER_DEPENDENCIES += libmodplug
 else
 SDL_MIXER_CONF_OPTS += --disable-music-mod-modplug
+endif
 endif
 
 ifeq ($(BR2_PACKAGE_TREMOR),y)

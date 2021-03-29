@@ -34,8 +34,8 @@ endif
 # build system uses non conventional variable names.
 define LUAJIT_BUILD_CMDS
 	$(TARGET_MAKE_ENV) $(MAKE) PREFIX="/usr" \
-		STATIC_CC="$(TARGET_CC)" \
-		DYNAMIC_CC="$(TARGET_CC) -fPIC" \
+		STATIC_CC="$(TARGET_CC) -fno-PIC" \
+		DYNAMIC_CC="$(TARGET_CC) -fno-PIC" \
 		TARGET_LD="$(TARGET_CC)" \
 		TARGET_AR="$(TARGET_AR) rcus" \
 		TARGET_STRIP=true \
