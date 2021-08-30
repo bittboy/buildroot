@@ -4,9 +4,8 @@
 #
 ################################################################################
 
-SDL_MIXER_VERSION = 1.2.13
-SDL_MIXER_SOURCE = SDL-1.2.tar.gz
-SDL_MIXER_SITE =  https://github.com/SDL-mirror/SDL_mixer/archive
+SDL_MIXER_VERSION = b38fd5e9b93b65684fbf49323ee42a6f167eff96
+SDL_MIXER_SITE = $(call github,libsdl-org,SDL_mixer,$(SDL_MIXER_VERSION))
 SDL_MIXER_LICENSE = zlib
 SDL_MIXER_LICENSE_FILES = COPYING
 
